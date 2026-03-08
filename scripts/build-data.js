@@ -141,7 +141,7 @@ for (const row of npcRows) {
   if (name === 'Human' || name === 'dummyText') continue;
 
   const behaviorVariationId = int(row.behaviorVariationId);
-  const poise = int(row.toughness);
+  const poise = Math.max(0, int(row.superArmorDurability));
   const getSoul = int(row.getSoul);
   const npcType = int(row.npcType);
 
@@ -246,7 +246,7 @@ console.log('\nStep 4: Grouping variants...');
 
 // For entries sharing the same behaviorVariationId and name, keep only the first
 // as the "primary" and mark the rest as variants
-const finalEnemies = [];
+let finalEnemies = [];
 const processedVariations = new Set();
 
 for (const enemy of enemies) {
@@ -279,6 +279,99 @@ for (const enemy of enemies) {
     finalEnemies.push(enemy);
   }
 }
+
+// ── 4b. Name-based boss dedup ─────────────────────────────
+// Merge entries that are clearly the same boss encounter
+// (e.g. "Malenia, Blade of Miquella" and "Malenia, Blade of Miquella (Boss)")
+console.log('  Name-based boss deduplication...');
+
+const bossGroups = new Map();
+const nonBossEntries = [];
+
+for (const enemy of finalEnemies) {
+  if (!enemy.isBoss) {
+    nonBossEntries.push(enemy);
+    continue;
+  }
+  // Strip trailing "(Boss)" or "(NPC Invader)" to get canonical name
+  const canonical = normalizeName(
+    enemy.name
+      .replace(/\s*\(Boss\)\s*$/i, '')
+      .replace(/\s*\(NPC Invader\)\s*$/i, '')
+  );
+  if (!bossGroups.has(canonical)) {
+    bossGroups.set(canonical, []);
+  }
+  bossGroups.get(canonical).push(enemy);
+}
+
+const dedupedBosses = [];
+let mergedCount = 0;
+
+for (const [, group] of bossGroups) {
+  if (group.length === 1) {
+    dedupedBosses.push(group[0]);
+    continue;
+  }
+
+  // Different HP = different encounters (location variants) — keep all
+  const hpSet = new Set(group.map(e => e.hp));
+  if (hpSet.size > 1) {
+    dedupedBosses.push(...group);
+    continue;
+  }
+
+  // Same HP = true duplicates — merge, keep the one with more attacks
+  group.sort((a, b) => b.attacks.length - a.attacks.length);
+  const primary = { ...group[0] };
+  if (group.length > 1) {
+    primary.variants = [
+      ...(primary.variants || []),
+      ...group.slice(1).map(v => ({
+        id: v.id,
+        name: v.name,
+        hp: v.hp,
+        poise: v.poise,
+        label: v.name !== primary.name ? v.name : `Duplicate (ID: ${v.id})`
+      }))
+    ];
+    mergedCount += group.length - 1;
+  }
+  dedupedBosses.push(primary);
+}
+
+finalEnemies = [...dedupedBosses, ...nonBossEntries];
+console.log(`  → Merged ${mergedCount} duplicate boss entries`);
+
+// ── 4c. Flag Unscaled entries ─────────────────────────────
+console.log('  Flagging Unscaled entries...');
+
+let unscaledCount = 0;
+for (const enemy of finalEnemies) {
+  if (enemy.name.includes('(Unscaled)')) {
+    enemy.isUnscaled = true;
+    unscaledCount++;
+
+    // Find the scaled equivalent by matching base name
+    const baseName = normalizeName(enemy.name.replace(/\s*\(Unscaled\)\s*/i, ''));
+    const scaled = finalEnemies.find(e =>
+      e.id !== enemy.id &&
+      !e.name.includes('(Unscaled)') &&
+      normalizeName(e.name).includes(baseName)
+    );
+
+    if (scaled) {
+      enemy.scaledEquivalentId = scaled.id;
+      enemy.scaledEquivalentName = scaled.name;
+      // Back-reference on the scaled version
+      if (!scaled.unscaledVariantId) {
+        scaled.unscaledVariantId = enemy.id;
+        scaled.unscaledVariantName = enemy.name;
+      }
+    }
+  }
+}
+console.log(`  → ${unscaledCount} Unscaled entries flagged`);
 
 // Sort: bosses first, then alphabetically
 finalEnemies.sort((a, b) => {
