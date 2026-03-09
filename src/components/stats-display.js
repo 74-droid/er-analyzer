@@ -1,18 +1,7 @@
 // ── Defense Bars & Resistance Grid ──────────────────────
 
-const DEFENSE_TYPES = [
+const ABSORPTION_TYPES = [
   { key: 'physical', label: 'Physical', barClass: 'bar-physical' },
-  { key: 'slash', label: 'Slash', barClass: 'bar-slash' },
-  { key: 'blow', label: 'Strike', barClass: 'bar-blow' },
-  { key: 'thrust', label: 'Thrust', barClass: 'bar-thrust' },
-  { key: 'magic', label: 'Magic', barClass: 'bar-magic' },
-  { key: 'fire', label: 'Fire', barClass: 'bar-fire' },
-  { key: 'lightning', label: 'Lightning', barClass: 'bar-lightning' },
-  { key: 'holy', label: 'Holy', barClass: 'bar-holy' },
-];
-
-const NEGATION_TYPES = [
-  { key: 'neutral', label: 'Physical', barClass: 'bar-physical' },
   { key: 'slash', label: 'Slash', barClass: 'bar-slash' },
   { key: 'blow', label: 'Strike', barClass: 'bar-blow' },
   { key: 'thrust', label: 'Thrust', barClass: 'bar-thrust' },
@@ -32,19 +21,20 @@ const RESIST_TYPES = [
   { key: 'deathBlight', label: 'Death Blight', icon: '&#9760;' },
 ];
 
-export function renderDefenseCard(defense) {
-  const maxVal = Math.max(...Object.values(defense), 1);
-  const barMax = Math.max(maxVal * 1.2, 200);
+export function renderAbsorptionCard(absorption) {
+  // DamageCutRate: 1.0 = no absorption, 0.5 = 50% absorbed, 1.1 = -10% (vulnerable)
+  const bars = ABSORPTION_TYPES.map(dt => {
+    const raw = absorption[dt.key] ?? 1;
+    const pct = Math.round((1 - raw) * 100); // positive = absorbed, negative = vulnerable
+    const barWidth = Math.min(Math.abs(pct), 100);
+    const isVuln = pct < 0;
 
-  const bars = DEFENSE_TYPES.map(dt => {
-    const val = defense[dt.key] || 0;
-    const pct = Math.max((val / barMax) * 100, 1);
     return `
       <div class="stat-row">
         <span class="stat-row-label">${dt.label}</span>
         <div class="stat-bar-container">
-          <div class="stat-bar ${dt.barClass}" style="width:${pct}%"></div>
-          <span class="stat-bar-value">${val}</span>
+          <div class="stat-bar ${dt.barClass}" style="width:${Math.max(barWidth, 1)}%; opacity:${isVuln ? 0.4 : 1}"></div>
+          <span class="stat-bar-value" style="${isVuln ? 'color:var(--accent-red)' : ''}">${pct}%</span>
         </div>
       </div>
     `;
@@ -52,39 +42,19 @@ export function renderDefenseCard(defense) {
 
   return `
     <div class="profile-card">
-      <div class="card-title">Defense</div>
+      <div class="card-title">Damage Absorption</div>
       ${bars}
     </div>
   `;
 }
 
-export function renderNegationCard(negation) {
-  // Negation values: 1.0 = 0% absorption, 0.5 = 50% absorption
-  // Lower value = more damage negated
-  const bars = NEGATION_TYPES.map(dt => {
-    const raw = negation[dt.key];
-    const absorption = ((1 - raw) * 100).toFixed(1);
-    // Bar width: higher absorption = wider bar
-    const pct = Math.max(Math.abs(parseFloat(absorption)), 1);
-    const isNegative = parseFloat(absorption) < 0;
+// Legacy compat — redirect old calls
+export function renderDefenseCard(defense) {
+  return renderAbsorptionCard(defense);
+}
 
-    return `
-      <div class="stat-row">
-        <span class="stat-row-label">${dt.label}</span>
-        <div class="stat-bar-container">
-          <div class="stat-bar ${dt.barClass}" style="width:${Math.min(Math.abs(pct), 100)}%; opacity:${isNegative ? 0.4 : 1}"></div>
-          <span class="stat-bar-value" style="${isNegative ? 'color:var(--accent-red)' : ''}">${isNegative ? '' : ''}${absorption}%</span>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  return `
-    <div class="profile-card">
-      <div class="card-title">Damage Negation</div>
-      ${bars}
-    </div>
-  `;
+export function renderNegationCard() {
+  return ''; // Consolidated into absorption card
 }
 
 export function renderResistancesCard(resistances) {

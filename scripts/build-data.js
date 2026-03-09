@@ -154,18 +154,10 @@ for (const row of npcRows) {
     getSoul,
     npcType,
     behaviorVariationId,
-    defense: {
-      physical: int(row.def_phys),
-      slash: int(row.def_slash),
-      blow: int(row.def_blow),
-      thrust: int(row.def_thrust),
-      magic: int(row.def_mag),
-      fire: int(row.def_fire),
-      lightning: int(row.def_thunder),
-      holy: int(row.def_dark)
-    },
-    damageNegation: {
-      neutral: num(row.neutralDamageCutRate),
+    // DamageCutRate values: lower = more resistant, >1 = vulnerable
+    // These are the REAL per-enemy damage absorption (flat def_ values are 100/0/0/0 for all NPCs)
+    absorption: {
+      physical: num(row.neutralDamageCutRate),
       slash: num(row.slashDamageCutRate),
       blow: num(row.blowDamageCutRate),
       thrust: num(row.thrustDamageCutRate),
@@ -174,6 +166,7 @@ for (const row of npcRows) {
       lightning: num(row.thunderDamageCutRate),
       holy: num(row.darkDamageCutRate)
     },
+    flatDefense: int(row.def_phys),
     resistances: {
       poison: int(row.resist_poison),
       scarletRot: int(row.resist_desease),
@@ -267,8 +260,8 @@ for (const enemy of enemies) {
         hp: v.hp,
         poise: v.poise,
         label: v.hp !== primary.hp ? `Variant (HP: ${v.hp})` : `Variant ${i + 2}`,
-        defense: v.defense,
-        damageNegation: v.damageNegation,
+        absorption: v.absorption,
+        flatDefense: v.flatDefense,
         resistances: v.resistances
       }));
     }

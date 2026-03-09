@@ -1,6 +1,6 @@
 // ── Enemy Profile Card ──────────────────────────────────
 
-import { renderDefenseCard, renderNegationCard, renderResistancesCard } from './stats-display.js';
+import { renderAbsorptionCard, renderResistancesCard } from './stats-display.js';
 import { renderAttackTable } from './attack-table.js';
 import { renderNGScaling } from './ng-scaling.js';
 
@@ -57,14 +57,15 @@ export function renderEnemyProfile(enemy, ngScaling) {
   // ── Stats Grid (Defense + Negation) ────────────────
   const statsGrid = document.createElement('div');
   statsGrid.className = 'profile-grid';
-  statsGrid.innerHTML = renderDefenseCard(enemy.defense) + renderNegationCard(enemy.damageNegation);
+  statsGrid.innerHTML = renderAbsorptionCard(enemy.absorption) + renderResistancesCard(enemy.resistances);
   container.appendChild(statsGrid);
 
-  // ── Resistances ────────────────────────────────────
-  const resistGrid = document.createElement('div');
-  resistGrid.className = 'profile-grid';
-  resistGrid.innerHTML = renderResistancesCard(enemy.resistances) + renderSpEffectsCard(enemy.spEffectIds);
-  container.appendChild(resistGrid);
+  // ── Special Effects ────────────────────────────────
+  const spEffectEl = document.createElement('div');
+  spEffectEl.innerHTML = renderSpEffectsCard(enemy.spEffectIds);
+  if (enemy.spEffectIds && enemy.spEffectIds.length > 0) {
+    container.appendChild(spEffectEl.firstElementChild);
+  }
 
   // ── Attack Table ───────────────────────────────────
   const attackEl = renderAttackTable(enemy.attacks);
