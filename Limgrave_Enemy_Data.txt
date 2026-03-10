@@ -1,0 +1,2254 @@
+================================================================================
+  LIMGRAVE NON-BOSS ENEMY DATA — ELDEN RING ANALYZER
+  Datamined Combat Data Extraction
+  Generated: 2026-03-10
+  Source: enemies.json (377 total enemies, 8056 total attacks)
+================================================================================
+
+METHODOLOGY NOTES:
+─────────────────
+1. All data extracted from the ER Analyzer enemies.json datamined dataset.
+2. "Unique Conceptual Attacks" are collapsed from raw behavior entries using:
+   - Elemental buff variants (Fire/Magic/Lightning/Holy versions of same animation)
+     count as 1 attack with noted elemental variants.
+   - Directional variants (Left/Right) of the same move count as 1 attack.
+   - Multi-hit combo parts count as 1 attack with noted hit count.
+3. Absorption values: < 1.0 = resistant (takes less damage), 1.0 = neutral,
+   > 1.0 = weak (takes more damage). Shown as multiplier and % reduction.
+4. spAttribute on attacks indicates elemental/status effects:
+   0=None, 10=Magic, 11=Fire, 12=Lightning, 13=Holy, 21=Rot, 22=Frost,
+   24=Blood, 25=Madness
+5. Some enemies (Wolf, Stray, Runebear, Omen, Grafted Scion) are tagged as boss
+   in the dataset despite also appearing as field enemies. For these, the lowest-HP
+   variant is used as a proxy for the field version, and this is noted.
+6. Enemies appearing in multiple sub-regions are fully detailed in their primary
+   location and cross-referenced in subsequent sections.
+
+
+================================================================================
+  SECTION 1: WEST LIMGRAVE
+  (Gatefront, Church of Elleh, Agheel Lake South, Waypoint Ruins area)
+================================================================================
+
+  ── Godrick Soldier ──
+  Note: Covers sword, spear variants. Named "Castle Soldier" in attack data
+  JSON Name: "Godrick Soldier" | ID: 43110000
+  HP: 192 | Poise: 30
+  Total Behavior Count (raw): 65
+  Unique Conceptual Attacks: 8
+
+  Attack Summary:
+    1. [Castle Soldier] Sword Normal
+       Damage: Phys:250 | Type: Thrust | Radius: 0.30 | KB: 0.75 | DmgLvl: 3
+       Elem variants: Fire, Holy | 4-part combo
+    2. [Castle Soldier] Pick Normal
+       Damage: Phys:200 | Type: Strike | Radius: 0.50 | KB: 1.25 | DmgLvl: 3
+       Elem variants: Fire | 2-part combo
+    3. [Castle Soldier] Kick
+       Damage: Phys:140 | Type: Slash | Radius: 0.50 | KB: 0.75 | DmgLvl: 2
+    4. [Castle Soldier] Torch [Fire]
+       Damage: Fire:140 | Type: Thrust | Radius: 0.50 | KB: 0.75 | DmgLvl: 1
+       Elem variants: Fire
+    5. [Castle Soldier] Greatsword Normal
+       Damage: Phys:320 | Type: Thrust | Radius: 0.30 | KB: 1.25 | DmgLvl: 7
+       Elem variants: Fire, Holy | 3-part combo
+    6. [Castle Soldier]
+       Damage: Phys:100 | Type: Thrust | Radius: 0.50 | KB: 1.25 | DmgLvl: 2
+    7. [Castle Soldier] Spear Normal
+       Damage: Phys:180 | Type: Strike | Radius: 0.20 | KB: 1.25 | DmgLvl: 2
+       Elem variants: Fire | 6-part combo
+    8. [Castle Soldier]
+       Damage: Phys:180 | Type: Strike | Radius: 0.20 | KB: 1.50 | DmgLvl: 2
+       Elem variants: Fire
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       0.90x (10.0% reduction) [Resist]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Godrick Foot Soldier ──
+  Note: Bow, torch, crossbow variants
+  JSON Name: "Godrick Foot Soldier" | ID: 43710000
+  HP: 147 | Poise: 30
+  Total Behavior Count (raw): 38
+  Unique Conceptual Attacks: 8
+
+  Attack Summary:
+    1. [Castle Foot Soldier] Longsword
+       Damage: Phys:140 | Type: Strike | Radius: 0.10 | KB: 0.45 | DmgLvl: 1
+    2. [Castle Foot Soldier] Longsword
+       Damage: Phys:150 | Type: Thrust | Radius: 0.10 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+    3. [Castle Foot Soldier] Staff Tip
+       Damage: Phys:130 | Type: Thrust | Radius: 0.20 | KB: 0.45 | DmgLvl: 1
+       2-part combo
+    4. [Castle Foot Soldier] Torch Tip [Fire]
+       Damage: Phys:50, Fire:100 | Type: Thrust | Radius: 0.30 | KB: 0.45 | DmgLvl: 1
+       Elem variants: Fire | 2-part combo
+    5. [Castle Foot Soldier] Staff Tip
+       Damage: Phys:140 | Type: Strike | Radius: 0.20 | KB: 1.20 | DmgLvl: 2
+       2-part combo
+    6. [Castle Foot Soldier] Staff Base
+       Damage: Phys:120 | Type: Thrust | Radius: 0.10 | KB: 1.20 | DmgLvl: 2
+       2-part combo
+    7. [Castle Foot Soldier] Staff
+       Damage: Phys:140 | Type: Strike | Radius: 0.20 | KB: 1.00 | DmgLvl: 2
+    8. [Castle Foot Soldier] Staff
+       Damage: Phys:80 | Type: Thrust | Radius: 0.20 | KB: 0.80 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.00x (0.0% reduction)
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    84
+    Frostbite:     84
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Godrick Knight ──
+  Note: Mounted (horse) and dismounted. Sword, spear variants with elemental buffs
+  JSON Name: "Godrick Knight" | ID: 43510000
+  HP: 576 | Poise: 65
+  Total Behavior Count (raw): 223
+  Unique Conceptual Attacks: 11
+
+  Attack Summary:
+    1. [Castle Knight] Sword Normal
+       Damage: Phys:260 | Type: Thrust | Radius: 0.30 | KB: 2.23 | DmgLvl: 3
+       Elem variants: Magic, Lightning, Fire, Holy, Frost/Blight, Frost | 2-part combo
+    2. [Castle Knight] Sword Normal
+       Damage: Phys:240 | Type: Strike | Radius: 0.30 | KB: 2.23 | DmgLvl: 3
+       Elem variants: Magic, Lightning, Fire, Holy, Frost/Blight, Frost | 2-part combo
+    3. [Castle Knight] Shield Bash
+       Damage: Phys:240 | Type: Slash | Radius: 0.50 | KB: 2.70 | DmgLvl: 7
+       2-part combo
+    4. [Castle Knight] Shield Bash
+       Damage: Phys:240 | Type: Thrust | Radius: 0.50 | KB: 2.70 | DmgLvl: 7
+    5. [Castle Knight] Sword
+       Damage: Phys:310 | Type: Thrust | Radius: 0.30 | KB: 1.25 | DmgLvl: 6
+       Elem variants: Fire
+    6. [Castle Knight] Spear Normal
+       Damage: Phys:190 | Type: Strike | Radius: 0.30 | KB: 0.56 | DmgLvl: 1
+       Elem variants: Magic, Lightning, Fire, Holy, Frost/Blight
+    7. [Castle Knight] Spear
+       Damage: Phys:200 | Type: Thrust | Radius: 0.30 | KB: 0.56 | DmgLvl: 1
+       Elem variants: Magic, Lightning, Fire, Holy, Frost/Blight
+    8. [Castle Knight] Spear
+       Damage: Phys:300 | Type: Strike | Radius: 0.30 | KB: 4.00 | DmgLvl: 9
+       Elem variants: Magic, Lightning, Fire, Holy, Frost/Blight | 3-part combo
+    9. [Castle Knight]
+       Damage: Phys:110 | Type: Strike | Radius: 0.30 | KB: 1.80 | DmgLvl: 1
+    10. [Castle Knight] Horse Spear
+       Damage: Phys:220 | Type: Thrust | Radius: 0.40 | KB: 1.25 | DmgLvl: 2
+       Elem variants: Magic, Lightning, Fire, Holy, Frost/Blight | 2-part combo
+    11. [Castle Knight] Horse Spear
+       Damage: Phys:220 | Type: Strike | Radius: 0.40 | KB: 2.25 | DmgLvl: 3
+       Elem variants: Magic, Lightning, Fire, Holy, Frost/Blight | 3-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      0.90x (10.0% reduction) [Resist]
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       0.80x (20.0% reduction) [Resist]
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    154
+    Frostbite:     154
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Godrick Knight's Horse ──
+  Note: The horse mount for Godrick Knights
+  JSON Name: "Godrick Knight's Horse" | ID: 43610000
+  HP: 448 | Poise: 65
+  Total Behavior Count (raw): 2
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Castle Knight Horse]
+       Damage: Phys:230 | Type: Slash | Radius: 0.75 | KB: 2.00 | DmgLvl: 6
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Wandering Noble ──
+  Note: Common fodder enemy throughout Limgrave
+  JSON Name: "Wandering Noble" | ID: 43000000
+  HP: 85 | Poise: 30
+  Total Behavior Count (raw): 19
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Wandering Noble]
+       Damage: Phys:130 | Type: Thrust | Radius: 0.30 | KB: 0.45 | DmgLvl: 1
+    2. [Wandering Noble]
+       Damage: Phys:120 | Type: Strike | Radius: 0.30 | KB: 0.45 | DmgLvl: 1
+    3. [Wandering Noble] [Fire]
+       Damage: Phys:90, Fire:90 | Type: Slash | Radius: 0.25 | KB: 0.45 | DmgLvl: 1
+       Elem variants: Fire | 2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    84
+    Frostbite:     84
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Wolf ──
+  Note: Field wolves (Agheel Lake, Gatefront). Also found in Stormhill, dungeons. NOTE: Tagged as boss in dataset — using lowest-HP variant as field enemy proxy
+  JSON Name: "Wolf" | ID: 55400000
+  HP: 78 | Poise: 30
+  Total Behavior Count (raw): 13
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [DLC - Wolf] Attack
+       Damage: Phys:200 | Type: Thrust | Radius: 0.60 | KB: 1.78 | DmgLvl: 2
+       5-part combo
+    2. [DLC - Wolf] Attack
+       Damage: Phys:200 | Type: Slash | Radius: 0.80 | KB: 1.78 | DmgLvl: 2
+       2-part combo
+    3. [Slug] Bullet - Spit
+       Damage: Phys:100 | Type: Thrust | Radius: 0.00 | KB: 0.45 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.40x (-40.0% reduction) [WEAK]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    84
+    Frostbite:     154
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Large Stray ──
+  Note: Wild dogs. Also found at Waypoint Ruins, roads
+  JSON Name: "Large Stray" | ID: 41600000
+  HP: 338 | Poise: 30
+  Total Behavior Count (raw): 41
+  Unique Conceptual Attacks: 2
+
+  Attack Summary:
+    1. [Stray 1]
+       Damage: Phys:180 | Type: Thrust | Radius: 0.45 | KB: 1.00 | DmgLvl: 2
+       Elem variants: Scarlet Rot, Frost | 3-part combo
+    2. [Stray 1] Combo Normal [Frost]
+       Damage: Phys:180 | Type: Thrust | Radius: 0.45 | KB: 2.00 | DmgLvl: 2
+       Elem variants: Frost
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.40x (-40.0% reduction) [WEAK]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    84
+    Frostbite:     112
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Boar ──
+  Note: Wild boars near forests and roads
+  JSON Name: "Boar" | ID: 54400000
+  HP: 82 | Poise: 0
+  Total Behavior Count (raw): 2
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [DLC - Boar] Attack
+       Damage: Phys:100 | Type: Slash | Radius: 0.50 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Goat ──
+  Note: Passive/semi-passive wildlife
+  JSON Name: "Goat" | ID: 60600000
+  HP: 55 | Poise: 0
+  Total Behavior Count (raw): 3
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Goat]
+       Damage: Phys:100 | Type: Thrust | Radius: 0.60 | KB: 1.00 | DmgLvl: 2
+       Elem variants: Lightning | 2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Deer ──
+  Note: Passive wildlife — flees from player
+  JSON Name: "Deer" | ID: 54100000
+  HP: 55 | Poise: 0
+  Total Behavior Count (raw): 1
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [DLC - Deer] Attack
+       Damage: Phys:80 | Type: Thrust | Radius: 0.40 | KB: 0.45 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Ram ──
+  Note: Found in fields. Giant Ram variant also exists
+  JSON Name: "Ram" | ID: 54500000
+  HP: 55 | Poise: 0
+  Total Behavior Count (raw): 5
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [DLC - Ram] Attack
+       Damage: Phys:100 | Type: Thrust | Radius: 0.60 | KB: 1.00 | DmgLvl: 2
+       Elem variants: Madness, Lightning | 2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Giant Rat ──
+  Note: Found in tunnels and near ruins
+  JSON Name: "Giant Rat" | ID: 40900000
+  HP: 556 | Poise: 65
+  Total Behavior Count (raw): 21
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Giant Rat]
+       Damage: Phys:200 | Type: Thrust | Radius: 0.80 | KB: 2.00 | DmgLvl: 2
+       Elem variants: Madness | 2-part combo
+    2. [Giant Rat]
+       Damage: Phys:180 | Type: Standard | Radius: 0.80 | KB: 1.13 | DmgLvl: 1
+       Elem variants: Madness
+    3. [Giant Rat]
+       Damage: Phys:210 | Type: Slash | Radius: 0.80 | KB: 2.00 | DmgLvl: 6
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.40x (-40.0% reduction) [WEAK]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        154
+    Scarlet Rot:   154
+    Hemorrhage:    84
+    Frostbite:     112
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Kaiden Sellsword ──
+  Note: Mounted warriors at Agheel Lake North camps. Also Stormhill
+  JSON Name: "Kaiden Sellsword" | ID: 40500000
+  HP: 487 | Poise: 65
+  Total Behavior Count (raw): 37
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Kaiden Sellsword]
+       Damage: Phys:380 | Type: Standard | Radius: 0.60 | KB: 1.80 | DmgLvl: 10
+       11-part combo
+    2. [Kaiden Sellsword]
+       Damage: Phys:180 | Type: Slash | Radius: 0.30 | KB: 1.80 | DmgLvl: 7
+       3-part combo
+    3. [Kaiden Sellsword]
+       Damage: Phys:470 | Type: Strike | Radius: 0.30 | KB: 0.00 | DmgLvl: 0
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.00x (0.0% reduction)
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    112
+    Frostbite:     154
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Horse ──
+  Note: Kaiden Sellsword horse mount
+  JSON Name: "Horse" | ID: 40600000
+  HP: 371 | Poise: 65
+  Total Behavior Count (raw): 2
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Horse]
+       Damage: Phys:310 | Type: Slash | Radius: 0.70 | KB: 1.80 | DmgLvl: 7
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Demi-Human (Large) ──
+  Note: Coastal Cave area, also Waypoint Ruins cellar
+  JSON Name: "Demi-Human (Large)" | ID: 57010000
+  HP: 233 | Poise: 30
+  Total Behavior Count (raw): 11
+  Unique Conceptual Attacks: 2
+
+  Attack Summary:
+    1. [DLC - Demi-Human (Large)] Attack [Frost]
+       Damage: Phys:190 | Type: Slash | Radius: 0.25 | KB: 1.00 | DmgLvl: 2
+       Elem variants: Frost | 2-part combo
+    2. [DLC - Demi-Human (Large)] Attack
+       Damage: Phys:160 | Type: Standard | Radius: 0.25 | KB: 0.45 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    84
+    Frostbite:     112
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Demi-Human Shaman ──
+  Note: Spellcaster variant found in Coastal Cave
+  JSON Name: "Demi-Human Shaman" | ID: 41100000
+  HP: 85 | Poise: 30
+  Total Behavior Count (raw): 10
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Demi-Human Shaman] [Frost]
+       Damage: Phys:80 | Type: Thrust | Radius: 0.20 | KB: 0.45 | DmgLvl: 1
+       Elem variants: Frost | 2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    84
+    Frostbite:     84
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Land Squirt ──
+  Note: Poison-spitting plants near lakes
+  JSON Name: "Land Squirt" | ID: 44400000
+  HP: 366 | Poise: 30
+  Total Behavior Count (raw): 5
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Land Squirt]
+       Damage: Phys:170 | Type: Slash | Radius: 1.00 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    112
+    Frostbite:     84
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Giant Land Squirt ──
+  Note: Large variant near Agheel Lake
+  JSON Name: "Giant Land Squirt" | ID: 44410000
+  HP: 1,429 | Poise: 65
+  Total Behavior Count (raw): 5
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Giant Land Squirt 1]
+       Damage: Phys:410 | Type: Slash | Radius: 1.50 | KB: 1.75 | DmgLvl: 6
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        252
+    Scarlet Rot:   252
+    Hemorrhage:    112
+    Frostbite:     84
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Eagle ──
+  Note: Flying above Limgrave — passive/ambient
+  JSON Name: "Eagle" | ID: 54010000
+  HP: 27 | Poise: 0
+  Total Behavior Count (raw): 0
+  Unique Conceptual Attacks: 0
+
+  Attack Summary: No attack data in dataset
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+
+================================================================================
+  SECTION 2: EAST LIMGRAVE
+  (Mistwood, Siofra River Well area, Fort Haight)
+================================================================================
+
+  ── Runebear ──
+  Note: Found in Mistwood. Major field threat. NOTE: Tagged as boss in dataset — using lowest-HP variant as field enemy proxy
+  JSON Name: "Runebear" | ID: 46300000
+  HP: 2,585 | Poise: 80
+  Total Behavior Count (raw): 23
+  Unique Conceptual Attacks: 6
+
+  Attack Summary:
+    1. [Runebear]
+       Damage: Phys:350 | Type: Slash | Radius: 0.75 | KB: 1.00 | DmgLvl: 10
+       5-part combo
+    2. [Runebear]
+       Damage: Phys:230 | Type: Standard | Radius: 0.75 | KB: 4.00 | DmgLvl: 4
+       8-part combo
+    3. [Runebear] Head
+       Damage: Phys:200 | Type: Standard | Radius: 1.60 | KB: 3.00 | DmgLvl: 1
+       2-part combo
+    4. [Runebear] Roar
+       Damage: Phys:200 | Type: Slash | Radius: 5.00 | KB: 1.00 | DmgLvl: 10
+    5. [Runebear] AoE
+       Damage: Phys:150 | Type: Slash | Radius: 3.50 | KB: 2.00 | DmgLvl: 2
+    6. [Runebear] AoE Small
+       Damage: Phys:100 | Type: Slash | Radius: 2.00 | KB: 2.00 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        154
+    Scarlet Rot:   154
+    Hemorrhage:    252
+    Frostbite:     252
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Demi-Human (Large) [Mistwood] ──
+  Cross-reference: Same data as "Demi-Human (Large)" — see primary listing above.
+  Note: Same type as West Limgrave — see Section 1 for full data
+
+  ── Miranda Sprout ──
+  Note: Giant Poison Flowers — found near Mistwood edges
+  JSON Name: "Miranda Sprout" | ID: 44810000
+  HP: 119 | Poise: 30
+  Total Behavior Count (raw): 3
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Miranda Sprout]
+       Damage: Phys:100 | Type: Thrust | Radius: 0.50 | KB: 0.60 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      0.90x (10.0% reduction) [Resist]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.40x (-40.0% reduction) [WEAK]
+    Lightning:   0.80x (20.0% reduction) [Resist]
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        542
+    Scarlet Rot:   252
+    Hemorrhage:    252
+    Frostbite:     63
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Catacomb Skeleton ──
+  Note: Skeletal Militiaman equivalent. Sword and shield skeletons
+  JSON Name: "Catacomb Skeleton" | ID: 56000000
+  HP: 281 | Poise: 30
+  Total Behavior Count (raw): 24
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [DLC - Catacomb Skeleton] Attack
+       Damage: Phys:240 | Type: Standard | Radius: 0.30 | KB: 1.78 | DmgLvl: 3
+       3-part combo
+    2. [DLC - Catacomb Skeleton] Attack
+       Damage: Phys:130 | Type: Strike | Radius: 0.20 | KB: 1.00 | DmgLvl: 2
+    3. [DLC - Catacomb Skeleton] Attack
+       Damage: Phys:290 | Type: Thrust | Radius: 3.00 | KB: 0.00 | DmgLvl: 0
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       0.90x (10.0% reduction) [Resist]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   112
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Skeleton (Sword and Shield) ──
+  Note: Found at various ruins and catacombs
+  JSON Name: "Skeleton (Sword and Shield)" | ID: 35100000
+  HP: 281 | Poise: 30
+  Total Behavior Count (raw): 24
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Skeleton (Scimitar)]
+       Damage: Phys:240 | Type: Standard | Radius: 0.30 | KB: 1.78 | DmgLvl: 3
+       3-part combo
+    2. [Skeleton (Scimitar)]
+       Damage: Phys:130 | Type: Strike | Radius: 0.20 | KB: 1.00 | DmgLvl: 2
+    3. [Skeleton (Scimitar)]
+       Damage: Phys:290 | Type: Thrust | Radius: 3.00 | KB: 0.00 | DmgLvl: 0
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       0.90x (10.0% reduction) [Resist]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   112
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Catacombs Sorcerer ──
+  Note: Skeleton Mage equivalent
+  JSON Name: "Catacombs Sorcerer" | ID: 58800000
+  HP: 210 | Poise: 30
+  Total Behavior Count (raw): 4
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [DLC - Catacombs Sorcerer] Attack
+       Damage: Phys:170 | Type: Standard | Radius: 0.30 | KB: 0.45 | DmgLvl: 2
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.00x (0.0% reduction)
+    Strike:      1.20x (-20.0% reduction) [Weak]
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        252
+    Scarlet Rot:   252
+    Hemorrhage:    84
+    Frostbite:     112
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Large Skeleton (Spear) ──
+  Note: Skeletal Bandit equivalent
+  JSON Name: "Large Skeleton (Spear)" | ID: 35000000
+  HP: 148 | Poise: 30
+  Total Behavior Count (raw): 27
+  Unique Conceptual Attacks: 7
+
+  Attack Summary:
+    1. [Skeleton (Curved Sword)] Spear
+       Damage: Phys:120 | Type: Thrust | Radius: 0.30 | KB: 0.45 | DmgLvl: 1
+    2. [Skeleton (Curved Sword)] Spear
+       Damage: Phys:160 | Type: Strike | Radius: 0.30 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+    3. [Skeleton (Curved Sword)] Crossbow Bash
+       Damage: Phys:80 | Type: Slash | Radius: 0.25 | KB: 0.45 | DmgLvl: 1
+    4. [Skeleton (Curved Sword)]
+       Damage: Phys:190 | Type: Thrust | Radius: 0.30 | KB: 1.00 | DmgLvl: 2
+    5. [Skeleton (Curved Sword)] Scythe
+       Damage: Phys:230 | Type: Standard | Radius: 0.30 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+    6. [Skeleton (Curved Sword)] Sscythe
+       Damage: Phys:120 | Type: Slash | Radius: 0.30 | KB: 0.45 | DmgLvl: 1
+    7. [Skeleton (Curved Sword)]
+       Damage: Phys:100 | Type: Slash | Radius: 0.20 | KB: 0.45 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       0.90x (10.0% reduction) [Resist]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   112
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Living Jar ──
+  Note: Small living jar found near roads
+  JSON Name: "Living Jar" | ID: 44910000
+  HP: 150 | Poise: 30
+  Total Behavior Count (raw): 10
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Living Jar]
+       Damage: Phys:140 | Type: Slash | Radius: 0.55 | KB: 0.45 | DmgLvl: 1
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.80x (20.0% reduction) [Resist]
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   999 [IMMUNE]
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Living Jar Warrior ──
+  Note: Larger, more aggressive jar warrior
+  JSON Name: "Living Jar Warrior" | ID: 44900000
+  HP: 449 | Poise: 65
+  Total Behavior Count (raw): 15
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Greatjar]
+       Damage: Phys:500 | Type: Slash | Radius: 0.60 | KB: 2.70 | DmgLvl: 10
+       Elem variants: Fire | 6-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.80x (20.0% reduction) [Resist]
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   999 [IMMUNE]
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+
+================================================================================
+  SECTION 3: AGHEEL LAKE & SHORELINE
+  (Agheel Lake, Dragon-Burnt Ruins, Seaside Ruins, coastal areas)
+================================================================================
+
+  ── Giant Crab ──
+  Note: Found in shallow water at Agheel Lake
+  JSON Name: "Giant Crab" | ID: 22700000
+  HP: 357 | Poise: 80
+  Total Behavior Count (raw): 23
+  Unique Conceptual Attacks: 2
+
+  Attack Summary:
+    1. [Giant Crab]
+       Damage: Phys:314 | Type: Slash | Radius: 1.50 | KB: 1.00 | DmgLvl: 6
+       4-part combo
+    2. [Giant Crab]
+       Damage: Phys:224 | Type: Thrust | Radius: 1.10 | KB: 1.00 | DmgLvl: 2
+       5-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.65x (35.0% reduction) [STRONG RESIST]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       0.80x (20.0% reduction) [Resist]
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.80x (20.0% reduction) [Resist]
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        154
+    Scarlet Rot:   154
+    Hemorrhage:    154
+    Frostbite:     84
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Crab ──
+  Note: Small crabs on shoreline
+  JSON Name: "Crab" | ID: 22710000
+  HP: 28 | Poise: 30
+  Total Behavior Count (raw): 6
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Crab]
+       Damage: Phys:104 | Type: Thrust | Radius: 0.30 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.90x (10.0% reduction) [Resist]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      0.90x (10.0% reduction) [Resist]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    112
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Small Land Octopus ──
+  Note: Found along coast and at Agheel Lake
+  JSON Name: "Small Land Octopus" | ID: 42300000
+  HP: 115 | Poise: 30
+  Total Behavior Count (raw): 6
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Small Land Octopus]
+       Damage: Phys:90 | Type: Slash | Radius: 0.20 | KB: 0.45 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.00x (0.0% reduction)
+    Strike:      0.90x (10.0% reduction) [Resist]
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    84
+    Frostbite:     20
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Giant Land Octopus ──
+  Note: Massive octopus — also found in Highroad Cave
+  JSON Name: "Giant Land Octopus" | ID: 42200000
+  HP: 2,327 | Poise: 65
+  Total Behavior Count (raw): 82
+  Unique Conceptual Attacks: 2
+
+  Attack Summary:
+    1. [Giant Land Octopus]
+       Damage: Phys:200 | Type: Slash | Radius: 2.20 | KB: 1.80 | DmgLvl: 7
+       4-part combo
+    2. [Giant Land Octopus]
+       Damage: Phys:160 | Type: Thrust | Radius: 0.50 | KB: 0.90 | DmgLvl: 1
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.20x (80.0% reduction) [STRONG RESIST]
+    Slash:       0.20x (80.0% reduction) [STRONG RESIST]
+    Strike:      0.20x (80.0% reduction) [STRONG RESIST]
+    Thrust:      0.20x (80.0% reduction) [STRONG RESIST]
+    Magic:       0.60x (40.0% reduction) [STRONG RESIST]
+    Fire:        0.60x (40.0% reduction) [STRONG RESIST]
+    Lightning:   0.80x (20.0% reduction) [Resist]
+    Holy:        0.60x (40.0% reduction) [STRONG RESIST]
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    112
+    Frostbite:     63
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Slug ──
+  Note: Slug/slime enemies near water. "Skeletal Slime" may not be in dataset under that name
+  JSON Name: "Slug" | ID: 40400000
+  HP: 105 | Poise: 30
+  Total Behavior Count (raw): 2
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Slug] Attack
+       Damage: Phys:120 | Type: Slash | Radius: 0.60 | KB: 0.45 | DmgLvl: 1
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Dragonfly ──
+  Note: Small ambient dragonflies
+  JSON Name: "Dragonfly" | ID: 54700000
+  HP: 17 | Poise: 0
+  Total Behavior Count (raw): 1
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [DLC - Dragonfly] Attack
+       Damage: Phys:85 | Type: Thrust | Radius: 0.30 | KB: 1.00 | DmgLvl: 2
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    63
+    Frostbite:     20
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Great Dragonfly ──
+  Note: Giant dragonfly variant
+  JSON Name: "Great Dragonfly" | ID: 54720000
+  HP: 17 | Poise: 0
+  Total Behavior Count (raw): 1
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [DLC - Great Dragonfly] Attack
+       Damage: Phys:200 | Type: Thrust | Radius: 0.90 | KB: 1.00 | DmgLvl: 2
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   84
+    Hemorrhage:    63
+    Frostbite:     20
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Murre ──
+  Note: Seabird — called "Murre" in game data. Passive wildlife
+  JSON Name: "Murre" | ID: 54600000
+  HP: 27 | Poise: 0
+  Total Behavior Count (raw): 0
+  Unique Conceptual Attacks: 0
+
+  Attack Summary: No attack data in dataset
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Turtle ──
+  Note: Dog. Passive wildlife near lakes and churches
+  JSON Name: "Turtle" | ID: 54800000
+  HP: 378 | Poise: 0
+  Total Behavior Count (raw): 0
+  Unique Conceptual Attacks: 0
+
+  Attack Summary: No attack data in dataset
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.65x (35.0% reduction) [STRONG RESIST]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   1.40x (-40.0% reduction) [WEAK]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         63
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Spirit Jellyfish ──
+  Note: Found at Stormhill Shack area at night
+  JSON Name: "Spirit Jellyfish" | ID: 41800000
+  HP: 223 | Poise: 30
+  Total Behavior Count (raw): 5
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Jellyfish]
+       Damage: Phys:160 | Type: Thrust | Radius: 0.70 | KB: 1.50 | DmgLvl: 2
+       3-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.00x (0.0% reduction)
+    Strike:      0.65x (35.0% reduction) [STRONG RESIST]
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       0.80x (20.0% reduction) [Resist]
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   999 [IMMUNE]
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+
+================================================================================
+  SECTION 4: STORMHILL
+  (Northern Limgrave, approach to Stormveil Castle)
+================================================================================
+
+  ── Godrick Soldier [Stormhill] ──
+  Cross-reference: Same data as "Godrick Soldier" — see primary listing above.
+  Note: Same as Section 1 — Stormhill camp variants
+
+  ── Godrick Knight [Stormhill] ──
+  Cross-reference: Same data as "Godrick Knight" — see primary listing above.
+  Note: Same as Section 1 — mounted patrols on Stormhill
+
+  ── Kaiden Sellsword [Stormhill] ──
+  Cross-reference: Same data as "Kaiden Sellsword" — see primary listing above.
+  Note: Same as Section 1 — Stormhill camp encounters
+
+  ── Wolf [Stormhill] ──
+  Cross-reference: Same data as "Wolf" — see primary listing above.
+  Note: Same as Section 1 — packs near Stormhill Shack. NOTE: Tagged as boss in dataset — using lowest-HP variant as field enemy proxy
+
+  ── Giant Ram ──
+  Note: Rolling rams on Stormhill road
+  JSON Name: "Giant Ram" | ID: 58500000
+  HP: 448 | Poise: 0
+  Total Behavior Count (raw): 2
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [DLC - Giant Ram] Attack [Lightning]
+       Damage: Phys:280, Ltn:100 | Type: Slash | Radius: 1.50 | KB: 1.80 | DmgLvl: 7
+       Elem variants: Lightning
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.40x (-40.0% reduction) [WEAK]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.40x (-40.0% reduction) [WEAK]
+    Thrust:      1.40x (-40.0% reduction) [WEAK]
+    Magic:       1.40x (-40.0% reduction) [WEAK]
+    Fire:        2.00x (-100.0% reduction) [WEAK]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        1.40x (-40.0% reduction) [WEAK]
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    63
+    Frostbite:     63
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Man-Bat ──
+  Note: Flying bat enemies at night and in caves
+  JSON Name: "Man-Bat" | ID: 42000000
+  HP: 126 | Poise: 30
+  Total Behavior Count (raw): 21
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Man-Bat]
+       Damage: Phys:170 | Type: Standard | Radius: 0.50 | KB: 1.00 | DmgLvl: 2
+       7-part combo
+    2. [Man-Bat]
+       Damage: Phys:200 | Type: Slash | Radius: 0.40 | KB: 1.78 | DmgLvl: 3
+       2-part combo
+    3. [Man-Bat]
+       Damage: Phys:150 | Type: Thrust | Radius: 0.40 | KB: 1.00 | DmgLvl: 2
+       4-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    84
+    Frostbite:     84
+    Sleep:         20
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Crimson Tear Scarab ──
+  Note: Teardrop Scarab — runs from player, drops flask charge
+  JSON Name: "Crimson Tear Scarab" | ID: 41910000
+  HP: 154 | Poise: 30
+  Total Behavior Count (raw): 1
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Scarab 2]
+       Damage: None | Type: Slash | Radius: 0.90 | KB: 0.00 | DmgLvl: 0
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      0.90x (10.0% reduction) [Resist]
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       0.60x (40.0% reduction) [STRONG RESIST]
+    Fire:        0.60x (40.0% reduction) [STRONG RESIST]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        0.60x (40.0% reduction) [STRONG RESIST]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   999 [IMMUNE]
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Scarab ──
+  Note: Generic scarab — runs from player
+  JSON Name: "Scarab" | ID: 62000000
+  HP: 213 | Poise: 65
+  Total Behavior Count (raw): 1
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. Throwing Blade - Default Bullet
+       Damage: None | Type: Slash | Radius: 1.30 | KB: 0.00 | DmgLvl: 5
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      0.90x (10.0% reduction) [Resist]
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       0.60x (40.0% reduction) [STRONG RESIST]
+    Fire:        0.60x (40.0% reduction) [STRONG RESIST]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        0.60x (40.0% reduction) [STRONG RESIST]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   999 [IMMUNE]
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+
+================================================================================
+  SECTION 5: STORMVEIL CASTLE
+  (Interior and ramparts of Stormveil Castle)
+================================================================================
+
+  ── Exile Soldier ──
+  Note: Castle defenders — sword variants
+  JSON Name: "Exile Soldier" | ID: 30000000
+  HP: 134 | Poise: 30
+  Total Behavior Count (raw): 24
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Exile Soldier]
+       Damage: Phys:130 | Type: Thrust | Radius: 0.30 | KB: 0.75 | DmgLvl: 1
+       Elem variants: Fire | 4-part combo
+    2. [Exile Soldier]
+       Damage: Phys:150 | Type: Strike | Radius: 0.30 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+    3. [Exile Soldier]
+       Damage: Phys:100 | Type: Slash | Radius: 0.60 | KB: 1.50 | DmgLvl: 5
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       0.90x (10.0% reduction) [Resist]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Large Exile Soldier ──
+  Note: Larger, more heavily-armed exile soldiers
+  JSON Name: "Large Exile Soldier" | ID: 30200000
+  HP: 192 | Poise: 50
+  Total Behavior Count (raw): 7
+  Unique Conceptual Attacks: 1
+
+  Attack Summary:
+    1. [Large Exile Soldier]
+       Damage: Phys:220 | Type: Thrust | Radius: 0.30 | KB: 1.80 | DmgLvl: 6
+       4-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       0.90x (10.0% reduction) [Resist]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Banished Knight ──
+  Note: Elite castle enemies — multiple weapon variants
+  JSON Name: "Banished Knight" | ID: 30100000
+  HP: 477 | Poise: 65
+  Total Behavior Count (raw): 82
+  Unique Conceptual Attacks: 9
+
+  Attack Summary:
+    1. [Banished Knight] Sword
+       Damage: Phys:290 | Type: Thrust | Radius: 0.20 | KB: 1.78 | DmgLvl: 3
+       Elem variants: Destined Death | 3-part combo
+    2. [Banished Knight] Sword
+       Damage: Phys:210 | Type: Strike | Radius: 0.20 | KB: 1.00 | DmgLvl: 2
+    3. [Banished Knight] Shield
+       Damage: Phys:260 | Type: Slash | Radius: 0.50 | KB: 2.00 | DmgLvl: 7
+       Elem variants: Destined Death | 2-part combo
+    4. [Banished Knight]
+       Damage: Phys:300 | Type: Thrust | Radius: 1.00 | KB: 0.45 | DmgLvl: 0
+    5. [Banished Knight] Shield
+       Damage: Phys:200 | Type: Thrust | Radius: 0.50 | KB: 1.80 | DmgLvl: 5
+    6. [Banished Knight] Dual Sword 12
+       Damage: Phys:210 | Type: Thrust | Radius: 0.35 | KB: 1.00 | DmgLvl: 2
+       Elem variants: Destined Death | 8-part combo
+    7. [Banished Knight] Dual Sword 12
+       Damage: Phys:210 | Type: Strike | Radius: 0.35 | KB: 1.00 | DmgLvl: 2
+       3-part combo
+    8. [Banished Knight] Halberd
+       Damage: Phys:240 | Type: Strike | Radius: 0.30 | KB: 1.00 | DmgLvl: 6
+       Elem variants: Destined Death | 2-part combo
+    9. [Banished Knight] Halberd
+       Damage: Phys:260 | Type: Thrust | Radius: 0.30 | KB: 1.00 | DmgLvl: 6
+       Elem variants: Destined Death | 5-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      0.90x (10.0% reduction) [Resist]
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       0.80x (20.0% reduction) [Resist]
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    154
+    Frostbite:     154
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Commoner ──
+  Note: Castle servants — HP:105 variant is the basic one
+  JSON Name: "Commoner" | ID: 36600000
+  HP: 105 | Poise: 30
+  Total Behavior Count (raw): 29
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Gostoc]
+       Damage: Phys:140 | Type: Thrust | Radius: 0.30 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+    2. [Gostoc]
+       Damage: Phys:220 | Type: Strike | Radius: 0.30 | KB: 0.00 | DmgLvl: 1
+       5-part combo
+    3. [Gostoc]
+       Damage: Phys:80 | Type: Slash | Radius: 0.30 | KB: 0.00 | DmgLvl: 1
+       Elem variants: Fire, Magic | 4-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    84
+    Frostbite:     84
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Commoner (Pot) ──
+  Note: Servants throwing pots
+  JSON Name: "Commoner (Pot)" | ID: 52400000
+  HP: 85 | Poise: 30
+  Total Behavior Count (raw): 32
+  Unique Conceptual Attacks: 2
+
+  Attack Summary:
+    1. [DLC - Commoner (Pot)] Attack
+       Damage: Phys:140 | Type: Standard | Radius: 0.30 | KB: 0.45 | DmgLvl: 1
+    2. [DLC - Commoner (Pot)] Attack
+       Damage: Phys:125 | Type: Slash | Radius: 0.50 | KB: 0.80 | DmgLvl: 0
+       6-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.40x (-40.0% reduction) [WEAK]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        63
+    Scarlet Rot:   63
+    Hemorrhage:    84
+    Frostbite:     84
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Warhawk ──
+  Note: Blade Eagles — Stormhawk enemies with blade-attached talons
+  JSON Name: "Warhawk" | ID: 42100000
+  HP: 302 | Poise: 50
+  Total Behavior Count (raw): 15
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Warhawk]
+       Damage: Phys:280 | Type: Thrust | Radius: 1.00 | KB: 2.00 | DmgLvl: 3
+       5-part combo
+    2. [Warhawk]
+       Damage: Phys:200 | Type: Strike | Radius: 0.30 | KB: 2.00 | DmgLvl: 2
+       2-part combo
+    3. [Warhawk]
+       Damage: Phys:190 | Type: Standard | Radius: 0.30 | KB: 1.70 | DmgLvl: 2
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.20x (-20.0% reduction) [Weak]
+    Fire:        1.20x (-20.0% reduction) [Weak]
+    Lightning:   1.20x (-20.0% reduction) [Weak]
+    Holy:        1.20x (-20.0% reduction) [Weak]
+
+  Status Effect Resistances:
+    Poison:        84
+    Scarlet Rot:   84
+    Hemorrhage:    84
+    Frostbite:     112
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Gravebird ──
+  Note: Flying undead birds in castle areas
+  JSON Name: "Gravebird" | ID: 50900000
+  HP: 161 | Poise: 30
+  Total Behavior Count (raw): 24
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [DLC - Gravebird] Attack
+       Damage: Phys:240 | Type: Standard | Radius: 0.85 | KB: 1.25 | DmgLvl: 2
+       4-part combo
+    2. [DLC - Gravebird] Attack
+       Damage: Phys:280 | Type: Strike | Radius: 0.60 | KB: 1.25 | DmgLvl: 2
+       4-part combo
+    3. [DLC - Gravebird] Attack
+       Damage: Phys:190 | Type: Thrust | Radius: 0.45 | KB: 0.50 | DmgLvl: 1
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.80x (20.0% reduction) [Resist]
+    Slash:       0.60x (40.0% reduction) [STRONG RESIST]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      0.60x (40.0% reduction) [STRONG RESIST]
+    Magic:       0.80x (20.0% reduction) [Resist]
+    Fire:        0.60x (40.0% reduction) [STRONG RESIST]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        0.60x (40.0% reduction) [STRONG RESIST]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   999 [IMMUNE]
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Grafted Scion (Unscaled) ──
+  Note: Multi-limbed grafted horror. Only boss version in data. NOTE: Tagged as boss in dataset — using lowest-HP variant as field enemy proxy
+  JSON Name: "Grafted Scion (Unscaled)" | ID: 46900000
+  HP: 1,146 | Poise: 80
+  Total Behavior Count (raw): 90
+  Unique Conceptual Attacks: 7
+
+  Attack Summary:
+    1. [Grafted Scion] Sword Arm 1
+       Damage: Phys:160 | Type: Thrust | Radius: 0.40 | KB: 1.00 | DmgLvl: 1
+       Elem variants: Holy
+    2. [Grafted Scion]
+       Damage: Phys:280 | Type: Thrust | Radius: 0.40 | KB: 3.50 | DmgLvl: 7
+       Elem variants: Holy | 11-part combo
+    3. [Grafted Scion]
+       Damage: Phys:320 | Type: Strike | Radius: 0.40 | KB: 1.80 | DmgLvl: 7
+       Elem variants: Holy | 7-part combo
+    4. [Grafted Scion] Shield Slam
+       Damage: Phys:330 | Type: Slash | Radius: 1.00 | KB: 1.80 | DmgLvl: 6
+       Elem variants: Holy | 2-part combo
+    5. [Grafted Scion] AoE
+       Damage: Phys:160 | Type: Thrust | Radius: 2.00 | KB: 1.80 | DmgLvl: 2
+    6. [Grafted Scion] Shield
+       Damage: Phys:180 | Type: Thrust | Radius: 1.00 | KB: 1.80 | DmgLvl: 2
+    7. [Grafted Scion]
+       Damage: Phys:250 | Type: Slash | Radius: 1.00 | KB: 2.70 | DmgLvl: 3
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       0.80x (20.0% reduction) [Resist]
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.80x (20.0% reduction) [Resist]
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        154
+    Scarlet Rot:   154
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Omen ──
+  Note: Horned cursed creature in castle depths. Only boss version in data. NOTE: Tagged as boss in dataset — using lowest-HP variant as field enemy proxy
+  JSON Name: "Omen" | ID: 21400000
+  HP: 902 | Poise: 65
+  Total Behavior Count (raw): 67
+  Unique Conceptual Attacks: 7
+
+  Attack Summary:
+    1. [Omen] Curved Sword
+       Damage: Phys:300 | Type: Standard | Radius: 0.30 | KB: 1.80 | DmgLvl: 6
+       Elem variants: Holy, Frost | 7-part combo
+    2. [Omen] Axe
+       Damage: Phys:340 | Type: Standard | Radius: 0.30 | KB: 0.00 | DmgLvl: 0
+       Elem variants: Frost, Holy | 4-part combo
+    3. [Omen] Hug
+       Damage: Phys:1 | Type: Thrust | Radius: 0.50 | KB: 0.45 | DmgLvl: 1
+    4. [Omen] Fist
+       Damage: Phys:260 | Type: Slash | Radius: 0.30 | KB: 2.50 | DmgLvl: 7
+       Elem variants: Holy | 4-part combo
+    5. [Omen] Kick
+       Damage: Phys:180 | Type: Slash | Radius: 0.30 | KB: 3.00 | DmgLvl: 2
+       Elem variants: Holy | 2-part combo
+    6. [Omen] Body
+       Damage: Phys:280 | Type: Slash | Radius: 1.00 | KB: 2.50 | DmgLvl: 7
+    7. [Omen] Body [Holy]
+       Damage: Phys:1 | Type: Thrust | Radius: 1.00 | KB: 0.45 | DmgLvl: 1
+       Elem variants: Holy
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.00x (0.0% reduction)
+    Slash:       1.10x (-10.0% reduction) [Weak]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      1.00x (0.0% reduction)
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Operatic Bat ──
+  Note: Singing bat creature in castle interiors
+  JSON Name: "Operatic Bat" | ID: 42010000
+  HP: 492 | Poise: 30
+  Total Behavior Count (raw): 11
+  Unique Conceptual Attacks: 3
+
+  Attack Summary:
+    1. [Operatic Bat]
+       Damage: Phys:80 | Type: Slash | Radius: 0.50 | KB: 0.45 | DmgLvl: 1
+    2. [Operatic Bat]
+       Damage: Phys:120 | Type: Thrust | Radius: 0.50 | KB: 0.45 | DmgLvl: 1
+       4-part combo
+    3. [Operatic Bat]
+       Damage: Phys:150 | Type: Standard | Radius: 0.50 | KB: 1.00 | DmgLvl: 2
+       2-part combo
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    1.10x (-10.0% reduction) [Weak]
+    Slash:       1.40x (-40.0% reduction) [WEAK]
+    Strike:      1.10x (-10.0% reduction) [Weak]
+    Thrust:      1.10x (-10.0% reduction) [Weak]
+    Magic:       1.00x (0.0% reduction)
+    Fire:        1.00x (0.0% reduction)
+    Lightning:   1.00x (0.0% reduction)
+    Holy:        1.00x (0.0% reduction)
+
+  Status Effect Resistances:
+    Poison:        112
+    Scarlet Rot:   112
+    Hemorrhage:    112
+    Frostbite:     112
+    Sleep:         84
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+  ── Man-Bat [Castle Interior] ──
+  Cross-reference: Same data as "Man-Bat" — see primary listing above.
+  Note: Same as Section 4 — found in dark castle corridors
+
+  ── Living Jar [Stormveil] ──
+  Cross-reference: Same data as "Living Jar" — see primary listing above.
+  Note: Same as Section 2 — found in castle areas
+
+
+================================================================================
+  SECTION 6: LIMGRAVE DUNGEONS
+  (Grouped by dungeon)
+================================================================================
+
+  ─── Limgrave Tunnels ───
+
+  ── Glintstone Digger ──
+  Note: Miners in Limgrave Tunnels — HP:70 variant (small)
+  JSON Name: "Glintstone Digger" | ID: 43830000
+  HP: 70 | Poise: 65
+  Total Behavior Count (raw): 6
+  Unique Conceptual Attacks: 2
+
+  Attack Summary:
+    1. [Glintstone Digger 1]
+       Damage: Phys:160 | Type: Slash | Radius: 0.20 | KB: 0.45 | DmgLvl: 1
+    2. [Glintstone Digger 1] [Magic]
+       Damage: Phys:100, Mag:140 | Type: Standard | Radius: 0.20 | KB: 0.45 | DmgLvl: 1
+       Elem variants: Magic
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.20x (80.0% reduction) [STRONG RESIST]
+    Slash:       0.20x (80.0% reduction) [STRONG RESIST]
+    Strike:      0.65x (35.0% reduction) [STRONG RESIST]
+    Thrust:      0.20x (80.0% reduction) [STRONG RESIST]
+    Magic:       0.60x (40.0% reduction) [STRONG RESIST]
+    Fire:        0.80x (20.0% reduction) [Resist]
+    Lightning:   0.80x (20.0% reduction) [Resist]
+    Holy:        0.80x (20.0% reduction) [Resist]
+
+  Status Effect Resistances:
+    Poison:        252
+    Scarlet Rot:   154
+    Hemorrhage:    154
+    Frostbite:     154
+    Sleep:         112
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+
+  ─── Stormfoot Catacombs ───
+
+  ── Imp (Lion Head) ──
+  Note: Fanged Imps — lion-headed variant with melee attacks
+  JSON Name: "Imp (Lion Head)" | ID: 58700000
+  HP: 172 | Poise: 30
+  Total Behavior Count (raw): 22
+  Unique Conceptual Attacks: 4
+
+  Attack Summary:
+    1. [DLC - Imp (Lion Head)] Attack [Frost]
+       Damage: Phys:280 | Type: Thrust | Radius: 0.40 | KB: 1.00 | DmgLvl: 6
+       Elem variants: Frost | 10-part combo
+    2. [DLC - Imp (Lion Head)] Attack [Frost]
+       Damage: Phys:180 | Type: Standard | Radius: 0.40 | KB: 1.00 | DmgLvl: 2
+       Elem variants: Frost
+    3. [DLC - Imp (Lion Head)] Attack [Frost]
+       Damage: Phys:110 | Type: Slash | Radius: 0.40 | KB: 1.37 | DmgLvl: 5
+       Elem variants: Frost
+    4. [DLC - Imp (Lion Head)] Attack [Frost]
+       Damage: Phys:280 | Type: Strike | Radius: 0.40 | KB: 1.78 | DmgLvl: 3
+       Elem variants: Frost
+
+  Defense/Absorption Profile (DamageCutRate):
+    Physical:    0.90x (10.0% reduction) [Resist]
+    Slash:       0.65x (35.0% reduction) [STRONG RESIST]
+    Strike:      1.00x (0.0% reduction)
+    Thrust:      0.65x (35.0% reduction) [STRONG RESIST]
+    Magic:       0.80x (20.0% reduction) [Resist]
+    Fire:        0.60x (40.0% reduction) [STRONG RESIST]
+    Lightning:   0.60x (40.0% reduction) [STRONG RESIST]
+    Holy:        0.60x (40.0% reduction) [STRONG RESIST]
+
+  Status Effect Resistances:
+    Poison:        999 [IMMUNE]
+    Scarlet Rot:   999 [IMMUNE]
+    Hemorrhage:    999 [IMMUNE]
+    Frostbite:     999 [IMMUNE]
+    Sleep:         999 [IMMUNE]
+    Madness:       999 [IMMUNE]
+    Death Blight:  999 [IMMUNE]
+
+  Flat Defense: 100
+
+
+  ─── Murkwater Cave ───
+
+  ── Highwayman ──
+  NOT IN DATASET — Not in dataset — may be categorized under a different name or share data with another enemy type (possibly Godrick Foot Soldier or similar). The Murkwater Cave enemies are generically-armed bandits.
+
+
+  ─── Murkwater Catacombs ───
+
+  ── Imp (Fanged Imp) [Murkwater] ──
+  Cross-reference: Same data as "Imp (Lion Head)" — see primary listing above.
+  Note: Same as Stormfoot Catacombs — see above
+
+  ── Catacomb Skeleton [Murkwater] ──
+  Cross-reference: Same data as "Catacomb Skeleton" — see primary listing above.
+  Note: Same as Section 2 — see above
+
+
+  ─── Deathtouched Catacombs ───
+
+  ── Skeleton (Sword and Shield) [Deathtouched] ──
+  Cross-reference: Same data as "Skeleton (Sword and Shield)" — see primary listing above.
+  Note: Same as Section 2
+
+  ── Large Skeleton (Spear) [Deathtouched] ──
+  Cross-reference: Same data as "Large Skeleton (Spear)" — see primary listing above.
+  Note: Same as Section 2
+
+
+  ─── Coastal Cave ───
+
+  ── Demi-Human (Large) [Coastal] ──
+  Cross-reference: Same data as "Demi-Human (Large)" — see primary listing above.
+  Note: Same as Section 1
+
+  ── Demi-Human Shaman [Coastal] ──
+  Cross-reference: Same data as "Demi-Human Shaman" — see primary listing above.
+  Note: Same as Section 1
+
+
+  ─── Highroad Cave ───
+
+  ── Wolf [Highroad] ──
+  Cross-reference: Same data as "Wolf" — see primary listing above.
+  Note: Same as Section 1. NOTE: Tagged as boss in dataset — using lowest-HP variant as field enemy proxy
+
+  ── Man-Bat [Highroad] ──
+  Cross-reference: Same data as "Man-Bat" — see primary listing above.
+  Note: Same as Section 4
+
+  ── Giant Land Octopus [Highroad] ──
+  Cross-reference: Same data as "Giant Land Octopus" — see primary listing above.
+  Note: Same as Section 3
+
+
+  ─── Groveside Cave ───
+
+  ── Wolf [Groveside] ──
+  Cross-reference: Same data as "Wolf" — see primary listing above.
+  Note: Same as Section 1 — uses same data entry. NOTE: Tagged as boss in dataset — using lowest-HP variant as field enemy proxy
+
+
+  ─── Waypoint Ruins Cellar ───
+
+  ── Wandering Noble [Waypoint] ──
+  Cross-reference: Same data as "Wandering Noble" — see primary listing above.
+  Note: Same as Section 1
+
+
+
+================================================================================
+  MASTER SUMMARY TABLE
+================================================================================
+
+| Enemy                               | Sub-Region           |     HP |  Poise | Uniq Atk | Prim. Dmg  | Notable Resists      | Special Effects           |
+|-------------------------------------|----------------------|--------|--------|----------|------------|----------------------|---------------------------|
+| Godrick Soldier                     | WEST LIMGRAVE        |    192 |     30 |        8 | Thrust     | —                    | Fire, Holy                |
+| Godrick Foot Soldier                | WEST LIMGRAVE        |    147 |     30 |        8 | Thrust     | —                    | Fire                      |
+| Godrick Knight                      | WEST LIMGRAVE        |    576 |     65 |       11 | Thrust     | Magic, Fire, Holy    | Magic, Lightning, Fire, Holy, Frost/Blight, Frost |
+| Godrick Knight's Horse              | WEST LIMGRAVE        |    448 |     65 |        1 | Slash      | —                    | —                         |
+| Wandering Noble                     | WEST LIMGRAVE        |     85 |     30 |        3 | Thrust     | —                    | Fire                      |
+| Wolf                                | WEST LIMGRAVE        |     78 |     30 |        3 | Thrust     | —                    | —                         |
+| Large Stray (Wild Dog)              | WEST LIMGRAVE        |    338 |     30 |        2 | Thrust     | —                    | Scarlet Rot, Frost        |
+| Boar                                | WEST LIMGRAVE        |     82 |      0 |        1 | Slash      | —                    | —                         |
+| Goat                                | WEST LIMGRAVE        |     55 |      0 |        1 | Thrust     | —                    | Lightning                 |
+| Deer                                | WEST LIMGRAVE        |     55 |      0 |        1 | Thrust     | —                    | —                         |
+| Ram                                 | WEST LIMGRAVE        |     55 |      0 |        1 | Thrust     | —                    | Madness, Lightning        |
+| Giant Rat                           | WEST LIMGRAVE        |    556 |     65 |        3 | Thrust     | —                    | Madness                   |
+| Kaiden Sellsword                    | WEST LIMGRAVE        |    487 |     65 |        3 | Standard   | —                    | —                         |
+| Horse (Kaiden mount)                | WEST LIMGRAVE        |    371 |     65 |        1 | Slash      | —                    | —                         |
+| Demi-Human (Large)                  | WEST LIMGRAVE        |    233 |     30 |        2 | Slash      | —                    | Frost                     |
+| Demi-Human Shaman                   | WEST LIMGRAVE        |     85 |     30 |        1 | Thrust     | —                    | Frost                     |
+| Land Squirt                         | WEST LIMGRAVE        |    366 |     30 |        1 | Slash      | —                    | —                         |
+| Giant Land Squirt                   | WEST LIMGRAVE        |   1429 |     65 |        1 | Slash      | —                    | —                         |
+| Eagle                               | WEST LIMGRAVE        |     27 |      0 |        0 | —          | —                    | —                         |
+| Runebear                            | EAST LIMGRAVE        |   2585 |     80 |        6 | Slash      | —                    | —                         |
+| Miranda Sprout                      | EAST LIMGRAVE        |    119 |     30 |        1 | Thrust     | Ltn, Holy            | —                         |
+| Catacomb Skeleton                   | EAST LIMGRAVE        |    281 |     30 |        3 | Standard   | Fire, Ltn            | —                         |
+| Skeleton (Sword and Shield)         | EAST LIMGRAVE        |    281 |     30 |        3 | Standard   | Fire, Ltn            | —                         |
+| Catacombs Sorcerer                  | EAST LIMGRAVE        |    210 |     30 |        1 | Standard   | —                    | —                         |
+| Large Skeleton (Spear)              | EAST LIMGRAVE        |    148 |     30 |        7 | Slash      | Fire, Ltn            | —                         |
+| Living Jar                          | EAST LIMGRAVE        |    150 |     30 |        1 | Slash      | Fire, Ltn, Holy      | —                         |
+| Living Jar Warrior                  | EAST LIMGRAVE        |    449 |     65 |        1 | Slash      | Fire, Ltn, Holy      | Fire                      |
+| Giant Crab                          | AGHEEL LAKE & SHORELINE |    357 |     80 |        2 | Slash      | Phys, Magic, Fire, Ltn, Holy | —                         |
+| Crab (Small)                        | AGHEEL LAKE & SHORELINE |     28 |     30 |        1 | Thrust     | —                    | —                         |
+| Small Land Octopus                  | AGHEEL LAKE & SHORELINE |    115 |     30 |        1 | Slash      | —                    | —                         |
+| Giant Land Octopus                  | AGHEEL LAKE & SHORELINE |   2327 |     65 |        2 | Slash      | Phys, Magic, Fire, Ltn, Holy | —                         |
+| Slug (Skeletal Slime)               | AGHEEL LAKE & SHORELINE |    105 |     30 |        1 | Slash      | —                    | —                         |
+| Dragonfly                           | AGHEEL LAKE & SHORELINE |     17 |      0 |        1 | Thrust     | —                    | —                         |
+| Great Dragonfly (Giant)             | AGHEEL LAKE & SHORELINE |     17 |      0 |        1 | Thrust     | —                    | —                         |
+| Guillemot                           | AGHEEL LAKE & SHORELINE |     27 |      0 |        0 | —          | —                    | —                         |
+| Turtle                              | AGHEEL LAKE & SHORELINE |    378 |      0 |        0 | —          | Phys                 | —                         |
+| Spirit Jellyfish                    | AGHEEL LAKE & SHORELINE |    223 |     30 |        1 | Thrust     | Magic, Fire          | —                         |
+| Giant Ram                           | STORMHILL            |    448 |      0 |        1 | Slash      | Ltn                  | Lightning                 |
+| Man-Bat (Giant Bat)                 | STORMHILL            |    126 |     30 |        3 | Standard   | —                    | —                         |
+| Crimson Tear Scarab                 | STORMHILL            |    154 |     30 |        1 | Slash      | Magic, Fire, Ltn, Holy | —                         |
+| Scarab                              | STORMHILL            |    213 |     65 |        1 | Slash      | Magic, Fire, Ltn, Holy | —                         |
+| Exile Soldier                       | STORMVEIL CASTLE     |    134 |     30 |        3 | Thrust     | —                    | Fire                      |
+| Large Exile Soldier                 | STORMVEIL CASTLE     |    192 |     50 |        1 | Thrust     | —                    | —                         |
+| Banished Knight                     | STORMVEIL CASTLE     |    477 |     65 |        9 | Thrust     | Magic, Fire, Holy    | Destined Death            |
+| Commoner                            | STORMVEIL CASTLE     |    105 |     30 |        3 | Thrust     | —                    | Fire, Magic               |
+| Commoner (Pot)                      | STORMVEIL CASTLE     |     85 |     30 |        2 | Standard   | —                    | —                         |
+| Warhawk (Stormhawk)                 | STORMVEIL CASTLE     |    302 |     50 |        3 | Thrust     | —                    | —                         |
+| Gravebird                           | STORMVEIL CASTLE     |    161 |     30 |        3 | Standard   | Phys, Magic, Fire, Ltn, Holy | —                         |
+| Grafted Scion                       | STORMVEIL CASTLE     |   1146 |     80 |        7 | Thrust     | Magic, Fire, Ltn, Holy | Holy                      |
+| Omen                                | STORMVEIL CASTLE     |    902 |     65 |        7 | Slash      | Holy                 | Holy, Frost               |
+| Operatic Bat (Chanting Winged Dame) | STORMVEIL CASTLE     |    492 |     30 |        3 | Slash      | —                    | —                         |
+| Glintstone Digger (Small)           | LIMGRAVE DUNGEONS    |     70 |     65 |        2 | Slash      | Phys, Magic, Fire, Ltn, Holy | Magic                     |
+| Imp (Fanged Imp)                    | LIMGRAVE DUNGEONS    |    172 |     30 |        4 | Thrust     | Magic, Fire, Ltn, Holy | Frost                     |
+| Highwayman                          | LIMGRAVE DUNGEONS    |      — |      — |        — | —          | —                    | —                         |
+
+
+================================================================================
+  COMPARISON METRICS
+================================================================================
+
+1. AVERAGE UNIQUE ATTACK COUNT BY ENEMY TIER
+─────────────────────────────────────────────
+
+| Tier                      |  Count |  Avg Attacks |  Min Attacks |  Max Attacks |
+|---------------------------|--------|--------------|--------------|--------------|
+| Standard                  |     18 |          2.1 |            0 |            8 |
+| Fodder                    |     22 |          2.0 |            0 |            8 |
+| Elite                     |      9 |          4.3 |            1 |           11 |
+| Mini-boss equivalent      |      4 |          4.0 |            1 |            7 |
+
+2. HP RANGE BY TIER
+───────────────────
+
+| Tier                      |   Min HP |   Avg HP |   Max HP |
+|---------------------------|----------|----------|----------|
+| Standard                  |      150 |      254 |      378 |
+| Fodder                    |       17 |       80 |      148 |
+| Elite                     |      448 |      537 |      902 |
+| Mini-boss equivalent      |     1146 |     1872 |     2585 |
+
+3. POISE RANGE BY TIER
+──────────────────────
+
+| Tier                      |  Min Poise |  Avg Poise |  Max Poise |
+|---------------------------|------------|------------|------------|
+| Standard                  |          0 |       37.2 |         80 |
+| Fodder                    |          0 |       20.7 |         65 |
+| Elite                     |          0 |       53.9 |         65 |
+| Mini-boss equivalent      |         65 |       72.5 |         80 |
+
+4. MOST COMMON DAMAGE TYPES ACROSS ALL LIMGRAVE FIELD ENEMIES
+──────────────────────────────────────────────────────────────
+
+  Thrust        23 enemies (43.4%) █████████████
+  Slash         20 enemies (37.7%) ███████████
+  Standard       7 enemies (13.2%) ████
+
+5. MOST COMMON SPECIAL EFFECTS (ON ENEMY ATTACKS)
+─────────────────────────────────────────────────
+
+  Fire                   7 enemies
+  Frost                  6 enemies
+  Holy                   4 enemies
+  Lightning              4 enemies
+  Magic                  3 enemies
+  Madness                2 enemies
+  Frost/Blight           1 enemies
+  Scarlet Rot            1 enemies
+  Destined Death         1 enemies
+
+6. KEY OBSERVATIONS
+───────────────────
+
+  - Average HP across all Limgrave non-boss enemies: 352
+  - Average Poise: 35.8
+  - Average Unique Conceptual Attacks: 2.6
+  - Total unique enemy types cataloged: 53
+  - Enemies with no attack data: 3
+  - Most complex enemy (highest unique attack count): Godrick Knight
+  - Tankiest non-boss enemy (highest HP): Runebear (2585 HP)
+
+================================================================================
+  END OF LIMGRAVE ENEMY DATA
+================================================================================
